@@ -7,6 +7,16 @@ app.set("port", 8888);
 
 app.use(bodyParser.json());
 
+app.use((err: any, req: any, res: any, next: any) => {
+  if (err) {
+    res
+      .status(400)
+      .json({ error: "Could not decode request: JSON parsing failed" });
+  } else {
+    next();
+  }
+});
+
 app.post("/", (req, res) => {
   if (req && req.body && req.body.payload) {
     const payload = req.body.payload;
@@ -23,6 +33,7 @@ app.post("/", (req, res) => {
       });
     res.json({ response });
   }
+  res.status(400);
 });
 
 export default app;
