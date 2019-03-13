@@ -1,7 +1,7 @@
 import { Then, Given } from "cucumber";
 import app from "../../../src/App";
 import * as request from "supertest";
-const sampleData = require("../scenarios/sampledata.json")
+const sampleData = require("../scenarios/sampledata.json");
 
 Given("the web service gets the request with sample data", function() {});
 
